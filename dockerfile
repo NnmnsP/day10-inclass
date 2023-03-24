@@ -1,2 +1,1 @@
 FROM postgres:13.3
-ENV POSTGRES_PASSWORD superpass15_22

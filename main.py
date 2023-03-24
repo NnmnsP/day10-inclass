@@ -1,10 +1,20 @@
 import logging
+import os
+
 import psycopg2
+from dotenv import load_dotenv
 
 def main():
+    # load environment variables
+    load_dotenv()
+
     # connect to the PostgreSQL server
     logging.info('Connecting to the PostgreSQL database...')
-    conn = psycopg2.connect(host="localhost", database="postgres", user="postgres", password="superpass15_22")
+    conn = psycopg2.connect(host="localhost",
+                            database=os.getenv('POSTGRES_DB'),
+                            user=os.getenv('POSTGRES_USER'),
+                            password=os.getenv('POSTGRES_PASSWORD'))
+
     logging.info('Connected.')
 
     # create table players
